@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projekt-firebase-cbb8f": {
+      "hosting": {
+        "danotes": [
+          "projekt-firebase-cbb8f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projekt-firebase-cbb8f"
+  }
+}
