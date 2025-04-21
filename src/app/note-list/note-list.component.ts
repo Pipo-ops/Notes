@@ -27,14 +27,13 @@ export class NoteListComponent {
       return this.noteService.trashNotes;
     }
   
-    // Nur Favoriten anzeigen?
     if (this.favFilter === 'fav') {
       return this.noteService.normalNotes.filter(note => note.marked);
     }
   
     return this.noteService.normalNotes;
   }
-
+  
   changeFavFilter(filter:"all" | "fav"){
     this.favFilter = filter;
   }

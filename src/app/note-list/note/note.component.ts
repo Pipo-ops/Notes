@@ -20,6 +20,7 @@ export class NoteComponent {
 
   changeMarkedStatus(){
     this.note.marked = !this.note.marked;
+    this.saveNote();
   }
 
   deleteHovered(){
@@ -37,19 +38,37 @@ export class NoteComponent {
     this.saveNote();
   }
 
-  moveToTrash(){
-    this.note.type = 'trash';
+  moveToTrash() {
+    if (this.note.id) {
+      const docId = this.note.id;
+      const newNote: Note = { ...this.note, type: 'trash' };
+      delete newNote.id;
+  
+      console.log('Moving note to trash with ID:', docId);
+      this.noteService.addNote(newNote, 'trash');
+      this.noteService.deleteNote('notes', docId);
+    }
   }
 
-  moveToNotes(){
-    this.note.type = 'note';
+  moveToNotes() {
+    if (this.note.id) {
+      const docId = this.note.id;
+      const newNote: Note = { ...this.note, type: 'note' };
+      delete newNote.id;
+  
+      console.log('Restoring note from trash with ID:', docId);
+      this.noteService.addNote(newNote, 'notes');
+      this.noteService.deleteNote('trash', docId);
+    }
   }
 
   deleteNote(){
-
+    if(this.note.id){ 
+      this.noteService.deleteNote("trash", this.note.id); 
+    }
   }
 
   saveNote(){
-    
+    this.noteService.updateNote(this.note)
   }
 }

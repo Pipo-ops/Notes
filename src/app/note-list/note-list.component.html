@@ -129,13 +129,13 @@
             </button>
         </div>
     </div>
-    <div>
-        <div class="notes_wrapper">
-            <div class="notes_list_button_wrapper">
-            </div>
-            <div>
-                <app-note *ngFor="let note of getList()" [note]="note"></app-note>
-            </div>
+    
+    <div class="notes_wrapper">
+        <div class="notes_list_button_wrapper">
+        </div>
+        <div>
+            <app-note *ngFor="let note of getList()" [note]="note"></app-note>
         </div>
     </div>
+    
 </div>
